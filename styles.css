@@ -1,0 +1,92 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: monospace;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #0a3c2f;
+}
+
+
+
+.container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    background: #0d614b;
+    padding: 40px 60px;
+}
+
+h2 {
+    font-size: 3em;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+}
+
+.reset {
+    padding: 15px 20px;
+    color: #267c65;
+    background: #fff;
+    border: none;
+    font-size: 1.5em;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.3s, color 0.3s; /* Transition pour un effet de survol */
+}
+
+.reset:focus {
+    color: #fff;
+    background: #267c65;
+}
+
+.game {
+    width: 430px;
+    height: 430px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    transform-style: preserve-3d;
+    perspective: 1000px; /* Augmenter la perspective pour un meilleur effet 3D */
+}
+
+.item {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3em;
+    background: #fff;
+    transition: transform 0.25s; /* Transition de transformation */
+}
+
+.item.boxOpen {
+    transform: rotateY(180deg); /* Rotation à 180 degrés lorsqu'ouverte */
+}
+
+.item::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: #209d7b;
+    transition: transform 0.25s; /* Transition de transformation */
+    transform: rotateY(0deg);
+    backface-visibility: hidden;
+}
+
+.item.boxOpen::after,
+.item.boxMatch::after {
+    transform: rotateY(180deg); /* Rotation pour cacher l'arrière */
+}
